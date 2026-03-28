@@ -81,7 +81,6 @@ public class SecurityConfig {
                                                 // Rutas exclusivas de turista
                                                 .requestMatchers("/api/turista/**").hasRole("TURISTA")
 
-                                                // Todo lo demas requiere estar autenticado
                                                 .anyRequest().authenticated())
 
                                 // Headers de seguridad adicionales

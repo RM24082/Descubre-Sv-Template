@@ -20,7 +20,7 @@ public class PresupuestoResponse {
     private Long idItinerario;
     private BigDecimal costoTransporte;
     private BigDecimal costoAlimentacion;
-    private BigDecimal costoEntradas;
+    private BigDecimal costoEntrada;
     private BigDecimal costoHospedaje;
     private BigDecimal costoOtros;
     private BigDecimal total;
@@ -35,8 +35,7 @@ public class PresupuestoResponse {
                 .idItinerario(presupuesto.getItinerario().getIdItinerario())
                 .costoTransporte(presupuesto.getCostoTransporte())
                 .costoAlimentacion(presupuesto.getCostoAlimentacion())
-                .costoEntradas(presupuesto.getCostoEntradas())
-                .costoHospedaje(presupuesto.getCostoHospedaje())
+                .costoEntrada(presupuesto.getCostoEntrada())
                 .costoOtros(presupuesto.getCostoOtros())
                 .total(presupuesto.getTotal())
                 .moneda(presupuesto.getMoneda())

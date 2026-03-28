@@ -1,6 +1,6 @@
 package com.example.descubresv.repository;
 
-import com.example.descubresv.model.entity.Favorito;
+import com.example.descubresv.model.entity.Favoritos;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,11 +10,11 @@ import java.util.Optional;
 
 // Repositorio de favoritos
 @Repository
-public interface FavoritoRepository extends JpaRepository<Favorito, Long> {
+public interface FavoritoRepository extends JpaRepository<Favoritos, Long> {
 
-    Page<Favorito> findByUsuarioIdUsuario(Long idUsuario, Pageable pageable);
+    Page<Favoritos> findByUsuarioIdUsuario(Long idUsuario, Pageable pageable);
 
-    Optional<Favorito> findByUsuarioIdUsuarioAndDestinoIdDestino(Long idUsuario, Long idDestino);
+    Optional<Favoritos> findByUsuarioIdUsuarioAndDestinoIdDestino(Long idUsuario, Long idDestino);
 
     boolean existsByUsuarioIdUsuarioAndDestinoIdDestino(Long idUsuario, Long idDestino);
 }

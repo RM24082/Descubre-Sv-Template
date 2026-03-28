@@ -6,7 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -23,9 +22,9 @@ public class ItinerarioResponse {
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
     private Integer duracion;
-    private BigDecimal presupuestoTotal;
+    private String presupuestoCategoria;
     private String tipoExperiencia;
-    private String companiaViaje;
+    private String tipoGrupo;
     private String modoPlanificacion;
     private Boolean activo;
     private LocalDateTime createdAt;
@@ -40,9 +39,9 @@ public class ItinerarioResponse {
                 .fechaInicio(itinerario.getFechaInicio())
                 .fechaFin(itinerario.getFechaFin())
                 .duracion(itinerario.getDuracion())
-                .presupuestoTotal(itinerario.getPresupuestoTotal())
+                .presupuestoCategoria(itinerario.getPresupuestoCategoria())
                 .tipoExperiencia(itinerario.getTipoExperiencia())
-                .companiaViaje(itinerario.getCompaniaViaje())
+                .tipoGrupo(itinerario.getTipoGrupo())
                 .modoPlanificacion(itinerario.getModoPlanificacion())
                 .activo(itinerario.getActivo())
                 .createdAt(itinerario.getCreatedAt())
@@ -52,7 +51,7 @@ public class ItinerarioResponse {
 
     // Convierte entidad a DTO con la lista de destinos incluida
     public static ItinerarioResponse fromEntityConDestinos(Itinerario itinerario,
-                                                           List<ItinerarioDestinoResponse> destinos) {
+        List<ItinerarioDestinoResponse> destinos) {
         ItinerarioResponse response = fromEntity(itinerario);
         response.setDestinos(destinos);
         return response;

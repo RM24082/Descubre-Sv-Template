@@ -19,7 +19,7 @@ public class DestinoService {
     private final CategoriaDestinoRepository categoriaRepository;
 
     public DestinoService(DestinoRepository destinoRepository,
-                          CategoriaDestinoRepository categoriaRepository) {
+            CategoriaDestinoRepository categoriaRepository) {
         this.destinoRepository = destinoRepository;
         this.categoriaRepository = categoriaRepository;
     }
@@ -78,7 +78,6 @@ public class DestinoService {
                 .horario(request.getHorario())
                 .mejorEpoca(request.getMejorEpoca())
                 .tipo(request.getTipo())
-                .distanciaDesdeCapital(request.getDistanciaDesdeCapital())
                 .comoLlegarVehiculo(request.getComoLlegarVehiculo())
                 .comoLlegarBus(request.getComoLlegarBus())
                 .latitud(request.getLatitud())
@@ -111,7 +110,6 @@ public class DestinoService {
         destino.setHorario(request.getHorario());
         destino.setMejorEpoca(request.getMejorEpoca());
         destino.setTipo(request.getTipo());
-        destino.setDistanciaDesdeCapital(request.getDistanciaDesdeCapital());
         destino.setComoLlegarVehiculo(request.getComoLlegarVehiculo());
         destino.setComoLlegarBus(request.getComoLlegarBus());
         destino.setLatitud(request.getLatitud());

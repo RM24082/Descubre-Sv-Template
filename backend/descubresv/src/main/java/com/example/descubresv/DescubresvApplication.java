@@ -8,6 +8,7 @@ public class DescubresvApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DescubresvApplication.class, args);
+		System.out.println(" [DESCUBRE-SV] Aplicación ejecutada correctamente");
 	}
 
 }
