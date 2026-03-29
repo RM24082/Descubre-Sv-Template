@@ -7,9 +7,9 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
-// Entidad categoria destino - clasificacion de destinos turisticos
+// Entidad categoria destino - Clasificación de destinos turísticos
 @Entity
-@Table(name = "categorias_destino")
+@Table(name = "categoria_destino")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -17,14 +17,17 @@ import java.time.LocalDateTime;
 @Builder
 public class CategoriaDestino {
 
+    // Identificador unico autogenerado para cada categoria de destino
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_categoria")
     private Long idCategoria;
 
+    // Nombre unico y obligatorio de la categoria (ej. Playas, Montanas, Ciudades)
     @Column(name = "nombre_categoria", nullable = false, unique = true, length = 100)
     private String nombreCategoria;
 
+    // Descripcion detallada de la categoria o caracteristicas principales
     @Column(columnDefinition = "TEXT")
     private String descripcion;
 

@@ -71,9 +71,9 @@ public class ItinerarioService {
                 .fechaInicio(request.getFechaInicio())
                 .fechaFin(request.getFechaFin())
                 .duracion(request.getDuracion())
-                .presupuestoTotal(request.getPresupuestoTotal())
+                .presupuestoCategoria(request.getPresupuestoCategoria())
                 .tipoExperiencia(request.getTipoExperiencia())
-                .companiaViaje(request.getCompaniaViaje())
+                .tipoGrupo(request.getTipoGrupo())
                 .modoPlanificacion(request.getModoPlanificacion())
                 .activo(true)
                 .build();
@@ -90,9 +90,9 @@ public class ItinerarioService {
         itinerario.setFechaInicio(request.getFechaInicio());
         itinerario.setFechaFin(request.getFechaFin());
         itinerario.setDuracion(request.getDuracion());
-        itinerario.setPresupuestoTotal(request.getPresupuestoTotal());
+        itinerario.setPresupuestoCategoria(request.getPresupuestoCategoria());
         itinerario.setTipoExperiencia(request.getTipoExperiencia());
-        itinerario.setCompaniaViaje(request.getCompaniaViaje());
+        itinerario.setTipoGrupo(request.getTipoGrupo());
         itinerario.setModoPlanificacion(request.getModoPlanificacion());
 
         itinerario = itinerarioRepository.save(itinerario);

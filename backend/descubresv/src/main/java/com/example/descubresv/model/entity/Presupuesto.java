@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 // Entidad presupuesto - desglose de costos por itinerario
 @Entity
-@Table(name = "presupuestos")
+@Table(name = "presupuesto")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -33,11 +33,8 @@ public class Presupuesto {
     @Column(name = "costo_alimentacion", precision = 10, scale = 2)
     private BigDecimal costoAlimentacion;
 
-    @Column(name = "costo_entradas", precision = 10, scale = 2)
-    private BigDecimal costoEntradas;
-
-    @Column(name = "costo_hospedaje", precision = 10, scale = 2)
-    private BigDecimal costoHospedaje;
+    @Column(name = "costo_entrada", precision = 10, scale = 2)
+    private BigDecimal costoEntrada;
 
     @Column(name = "costo_otros", precision = 10, scale = 2)
     private BigDecimal costoOtros;

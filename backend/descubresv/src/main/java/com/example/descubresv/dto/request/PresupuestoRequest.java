@@ -12,9 +12,15 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class PresupuestoRequest {
 
+    // Monto estimado para transporte (combustible, pasajes, traslados internos).
     private BigDecimal costoTransporte;
+
+    // Monto estimado para alimentacion durante el viaje.
     private BigDecimal costoAlimentacion;
-    private BigDecimal costoEntradas;
-    private BigDecimal costoHospedaje;
+
+    // Monto estimado para entradas a destinos, parques o actividades.
+    private BigDecimal costoEntrada;
+
+    // Monto estimado para gastos adicionales no contemplados en otras categorias.
     private BigDecimal costoOtros;
 }

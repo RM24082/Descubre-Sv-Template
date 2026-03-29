@@ -20,7 +20,7 @@ public class PresupuestoService {
     private final ItinerarioRepository itinerarioRepository;
 
     public PresupuestoService(PresupuestoRepository presupuestoRepository,
-                              ItinerarioRepository itinerarioRepository) {
+            ItinerarioRepository itinerarioRepository) {
         this.presupuestoRepository = presupuestoRepository;
         this.itinerarioRepository = itinerarioRepository;
     }
@@ -45,16 +45,14 @@ public class PresupuestoService {
 
         BigDecimal transporte = valorOCero(request.getCostoTransporte());
         BigDecimal alimentacion = valorOCero(request.getCostoAlimentacion());
-        BigDecimal entradas = valorOCero(request.getCostoEntradas());
-        BigDecimal hospedaje = valorOCero(request.getCostoHospedaje());
+        BigDecimal entrada = valorOCero(request.getCostoEntrada());
         BigDecimal otros = valorOCero(request.getCostoOtros());
 
         presupuesto.setCostoTransporte(transporte);
         presupuesto.setCostoAlimentacion(alimentacion);
-        presupuesto.setCostoEntradas(entradas);
-        presupuesto.setCostoHospedaje(hospedaje);
+        presupuesto.setCostoEntrada(entrada);
         presupuesto.setCostoOtros(otros);
-        presupuesto.setTotal(transporte.add(alimentacion).add(entradas).add(hospedaje).add(otros));
+        presupuesto.setTotal(transporte.add(alimentacion).add(entrada).add(otros));
 
         presupuesto = presupuestoRepository.save(presupuesto);
         return PresupuestoResponse.fromEntity(presupuesto);

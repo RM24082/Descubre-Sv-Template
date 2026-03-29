@@ -1,6 +1,6 @@
 package com.example.descubresv.dto.response;
 
-import com.example.descubresv.model.entity.Favorito;
+import com.example.descubresv.model.entity.Favoritos;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,7 +20,7 @@ public class FavoritoResponse {
     private LocalDateTime createdAt;
 
     // Convierte entidad a DTO, incluye el destino completo
-    public static FavoritoResponse fromEntity(Favorito favorito) {
+    public static FavoritoResponse fromEntity(Favoritos favorito) {
         return FavoritoResponse.builder()
                 .idFavorito(favorito.getIdFavorito())
                 .destino(DestinoResponse.fromEntity(favorito.getDestino()))

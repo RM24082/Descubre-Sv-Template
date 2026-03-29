@@ -3,7 +3,7 @@ package com.example.descubresv.service;
 import com.example.descubresv.dto.response.FavoritoResponse;
 import com.example.descubresv.exception.ResourceNotFoundException;
 import com.example.descubresv.model.entity.Destino;
-import com.example.descubresv.model.entity.Favorito;
+import com.example.descubresv.model.entity.Favoritos;
 import com.example.descubresv.model.entity.Usuario;
 import com.example.descubresv.repository.DestinoRepository;
 import com.example.descubresv.repository.FavoritoRepository;
@@ -32,7 +32,7 @@ public class FavoritoService {
 
     // Agrega o quita un destino de favoritos, funciona como toggle
     public boolean toggle(Long userId, Long idDestino) {
-        Optional<Favorito> existente = favoritoRepository
+        Optional<Favoritos> existente = favoritoRepository
                 .findByUsuarioIdUsuarioAndDestinoIdDestino(userId, idDestino);
 
         if (existente.isPresent()) {
@@ -46,7 +46,7 @@ public class FavoritoService {
         Destino destino = destinoRepository.findById(idDestino)
                 .orElseThrow(() -> new ResourceNotFoundException("Destino no encontrado con id: " + idDestino));
 
-        Favorito favorito = Favorito.builder()
+        Favoritos favorito = Favoritos.builder()
                 .usuario(usuario)
                 .destino(destino)
                 .build();

@@ -9,14 +9,14 @@ import java.time.LocalDateTime;
 // Entidad favorito - destinos guardados por turistas
 @Entity
 @Table(name = "favoritos", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"id_usuario", "id_destino"})
+        @UniqueConstraint(columnNames = { "id_usuario", "id_destino" })
 })
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Favorito {
+public class Favoritos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
