@@ -16,6 +16,7 @@ import java.util.List;
 
 // Filtro JWT - intercepta cada request para validar el token
 @Component
+@SuppressWarnings("null")
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtService jwtService;

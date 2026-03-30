@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 // Servicio para gestionar destinos turisticos con filtros y paginacion
 @Service
+@SuppressWarnings("null")
 public class DestinoService {
 
     private final DestinoRepository destinoRepository;

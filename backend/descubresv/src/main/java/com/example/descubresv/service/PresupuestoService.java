@@ -14,6 +14,7 @@ import java.math.BigDecimal;
 
 // Servicio para gestionar el presupuesto de un itinerario
 @Service
+@SuppressWarnings("null")
 public class PresupuestoService {
 
     private final PresupuestoRepository presupuestoRepository;

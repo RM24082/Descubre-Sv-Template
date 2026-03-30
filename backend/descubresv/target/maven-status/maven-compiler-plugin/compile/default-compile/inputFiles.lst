@@ -1,4 +1,5 @@
 /home/daniel/Desktop/Java/descubresv/backend/descubresv/src/main/java/com/example/descubresv/DescubresvApplication.java
+/home/daniel/Desktop/Java/descubresv/backend/descubresv/src/main/java/com/example/descubresv/config/DataSeeder.java
 /home/daniel/Desktop/Java/descubresv/backend/descubresv/src/main/java/com/example/descubresv/config/SecurityConfig.java
 /home/daniel/Desktop/Java/descubresv/backend/descubresv/src/main/java/com/example/descubresv/config/SwaggerConfig.java
 /home/daniel/Desktop/Java/descubresv/backend/descubresv/src/main/java/com/example/descubresv/controller/AuthController.java
@@ -34,7 +35,7 @@
 /home/daniel/Desktop/Java/descubresv/backend/descubresv/src/main/java/com/example/descubresv/model/entity/Alimentacion.java
 /home/daniel/Desktop/Java/descubresv/backend/descubresv/src/main/java/com/example/descubresv/model/entity/CategoriaDestino.java
 /home/daniel/Desktop/Java/descubresv/backend/descubresv/src/main/java/com/example/descubresv/model/entity/Destino.java
-/home/daniel/Desktop/Java/descubresv/backend/descubresv/src/main/java/com/example/descubresv/model/entity/Favorito.java
+/home/daniel/Desktop/Java/descubresv/backend/descubresv/src/main/java/com/example/descubresv/model/entity/Favoritos.java
 /home/daniel/Desktop/Java/descubresv/backend/descubresv/src/main/java/com/example/descubresv/model/entity/Itinerario.java
 /home/daniel/Desktop/Java/descubresv/backend/descubresv/src/main/java/com/example/descubresv/model/entity/ItinerarioDestino.java
 /home/daniel/Desktop/Java/descubresv/backend/descubresv/src/main/java/com/example/descubresv/model/entity/ItinerarioDestinoId.java

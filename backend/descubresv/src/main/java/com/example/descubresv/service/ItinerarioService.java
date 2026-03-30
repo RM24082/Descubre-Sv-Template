@@ -24,6 +24,7 @@ import java.util.stream.Collectors;
 
 // Servicio para gestionar itinerarios de viaje del turista
 @Service
+@SuppressWarnings("null")
 public class ItinerarioService {
 
     private final ItinerarioRepository itinerarioRepository;
@@ -32,9 +33,9 @@ public class ItinerarioService {
     private final DestinoRepository destinoRepository;
 
     public ItinerarioService(ItinerarioRepository itinerarioRepository,
-                             ItinerarioDestinoRepository itinerarioDestinoRepository,
-                             UsuarioRepository usuarioRepository,
-                             DestinoRepository destinoRepository) {
+            ItinerarioDestinoRepository itinerarioDestinoRepository,
+            UsuarioRepository usuarioRepository,
+            DestinoRepository destinoRepository) {
         this.itinerarioRepository = itinerarioRepository;
         this.itinerarioDestinoRepository = itinerarioDestinoRepository;
         this.usuarioRepository = usuarioRepository;
@@ -108,7 +109,7 @@ public class ItinerarioService {
 
     // Agrega un destino al itinerario del usuario
     public ItinerarioDestinoResponse agregarDestino(Long userId, Long idItinerario,
-                                                     ItinerarioDestinoRequest request) {
+            ItinerarioDestinoRequest request) {
         Itinerario itinerario = buscarItinerarioDelUsuario(userId, idItinerario);
 
         Destino destino = destinoRepository.findById(request.getIdDestino())

@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 // Servicio de autenticacion, maneja registro, login y consulta de perfil
 @Service
+@SuppressWarnings("null")
 public class AuthService {
 
     private final UsuarioRepository usuarioRepository;

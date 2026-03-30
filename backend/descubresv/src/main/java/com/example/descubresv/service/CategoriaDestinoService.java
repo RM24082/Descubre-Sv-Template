@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 
 // Servicio para gestionar las categorias de destinos turisticos
 @Service
+@SuppressWarnings("null")
 public class CategoriaDestinoService {
 
     private final CategoriaDestinoRepository categoriaRepository;

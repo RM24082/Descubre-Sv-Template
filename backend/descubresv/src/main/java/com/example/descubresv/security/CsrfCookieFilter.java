@@ -11,6 +11,7 @@ import java.io.IOException;
 
 // Filtro CSRF Cookie - fuerza la generacion de la cookie XSRF-TOKEN en cada respuesta
 // El frontend React leera esta cookie y la enviara como header X-XSRF-TOKEN
+@SuppressWarnings("null")
 public class CsrfCookieFilter extends OncePerRequestFilter {
 
     @Override

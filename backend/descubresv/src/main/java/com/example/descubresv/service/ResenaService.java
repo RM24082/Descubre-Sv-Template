@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 // Servicio para gestionar resenas de destinos turisticos
 @Service
+@SuppressWarnings("null")
 public class ResenaService {
 
     private final ResenaRepository resenaRepository;
@@ -23,8 +24,8 @@ public class ResenaService {
     private final DestinoRepository destinoRepository;
 
     public ResenaService(ResenaRepository resenaRepository,
-                         UsuarioRepository usuarioRepository,
-                         DestinoRepository destinoRepository) {
+            UsuarioRepository usuarioRepository,
+            DestinoRepository destinoRepository) {
         this.resenaRepository = resenaRepository;
         this.usuarioRepository = usuarioRepository;
         this.destinoRepository = destinoRepository;
@@ -36,7 +37,8 @@ public class ResenaService {
                 .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado"));
 
         Destino destino = destinoRepository.findById(request.getIdDestino())
-                .orElseThrow(() -> new ResourceNotFoundException("Destino no encontrado con id: " + request.getIdDestino()));
+                .orElseThrow(
+                        () -> new ResourceNotFoundException("Destino no encontrado con id: " + request.getIdDestino()));
 
         Resena resena = Resena.builder()
                 .usuario(usuario)

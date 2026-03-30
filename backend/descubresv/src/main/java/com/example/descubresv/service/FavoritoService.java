@@ -16,6 +16,7 @@ import java.util.Optional;
 
 // Servicio para gestionar favoritos del turista
 @Service
+@SuppressWarnings("null")
 public class FavoritoService {
 
     private final FavoritoRepository favoritoRepository;
@@ -23,8 +24,8 @@ public class FavoritoService {
     private final DestinoRepository destinoRepository;
 
     public FavoritoService(FavoritoRepository favoritoRepository,
-                           UsuarioRepository usuarioRepository,
-                           DestinoRepository destinoRepository) {
+            UsuarioRepository usuarioRepository,
+            DestinoRepository destinoRepository) {
         this.favoritoRepository = favoritoRepository;
         this.usuarioRepository = usuarioRepository;
         this.destinoRepository = destinoRepository;
