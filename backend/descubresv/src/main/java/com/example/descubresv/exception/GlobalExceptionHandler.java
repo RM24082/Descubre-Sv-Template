@@ -44,7 +44,7 @@ public class GlobalExceptionHandler {
         });
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
-                .body(ApiResponse.error("Errores de validacion"));
+                .body(new ApiResponse<>(false, "Errores de validacion", errores));
     }
 
     // Email duplicado al registrar
