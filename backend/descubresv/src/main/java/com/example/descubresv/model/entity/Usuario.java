@@ -21,7 +21,7 @@ import java.time.LocalDateTime;
 @Builder
 public class Usuario {
 
-    // Identificador unico autogenerado del usuario.
+    // Identificador único autogenerado del usuario.
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_usuario")
@@ -31,12 +31,12 @@ public class Usuario {
     @Column(nullable = false, length = 100)
     private String nombre;
 
-    // Correo electronico unico usado para autenticacion y contacto.
+    // Correo electrónico único usado para autenticación y contacto.
     @Column(nullable = false, unique = true, length = 150)
     private String correo;
 
-    // Hash de la contrasena; no se almacena la contrasena en texto plano.
-    @Column(name = "password_hash", nullable = false, length = 255)
+    // Hash de la contraseña; no se almacena la contraseña en texto plano.
+    @Column(name = "password_hash", nullable = false)
     private String passwordHash;
 
     @Column(length = 100)
@@ -57,7 +57,7 @@ public class Usuario {
     @Column(nullable = false, columnDefinition = "rol_usuario DEFAULT 'TURISTA'")
     private RolUsuario rol;
 
-    // Estado logico para activar/desactivar cuentas sin eliminar el historial.
+    // Estado lógico para activar/desactivar cuentas sin eliminar el historial.
     @Column(nullable = false)
     @Builder.Default
     private Boolean activo = true;

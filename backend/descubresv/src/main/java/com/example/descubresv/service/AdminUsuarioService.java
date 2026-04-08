@@ -6,6 +6,7 @@ import com.example.descubresv.exception.BadRequestException;
 import com.example.descubresv.exception.EmailAlreadyExistsException;
 import com.example.descubresv.exception.ResourceNotFoundException;
 import com.example.descubresv.model.entity.Usuario;
+import com.example.descubresv.model.enums.RolUsuario;
 import com.example.descubresv.repository.UsuarioRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,7 +14,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-@SuppressWarnings("null")
 public class AdminUsuarioService {
 
     private final UsuarioRepository usuarioRepository;
@@ -25,7 +25,8 @@ public class AdminUsuarioService {
     }
 
     public Page<UsuarioResponse> listar(Pageable pageable) {
-        return usuarioRepository.findAll(pageable).map(UsuarioResponse::fromEntity);
+        return usuarioRepository.findAll(pageable)
+                .map(UsuarioResponse::fromEntity);
     }
 
     public UsuarioResponse buscarPorId(Long id) {
@@ -35,12 +36,13 @@ public class AdminUsuarioService {
     }
 
     public UsuarioResponse crear(AdminUsuarioRequest request) {
+
         if (usuarioRepository.existsByCorreo(request.getCorreo())) {
             throw new EmailAlreadyExistsException("Ya existe un usuario con el correo: " + request.getCorreo());
         }
-        
+
         if (request.getPassword() == null || request.getPassword().isBlank()) {
-            throw new BadRequestException("La contraseña es obligatoria al crear un usuario");
+            throw new BadRequestException("La contraseña es obligatoria");
         }
 
         Usuario usuario = Usuario.builder()
@@ -48,7 +50,10 @@ public class AdminUsuarioService {
                 .correo(request.getCorreo())
                 .passwordHash(passwordEncoder.encode(request.getPassword()))
                 .nacionalidad(request.getNacionalidad())
-                .rol(request.getRol())
+                .preferencias(request.getPreferencias())
+                .presupuestoEstimado(request.getPresupuestoEstimado())
+                .avatarUrl(request.getAvatarUrl())
+                .rol(request.getRol() != null ? request.getRol() : RolUsuario.TURISTA)
                 .activo(request.getActivo() != null ? request.getActivo() : true)
                 .build();
 
@@ -56,18 +61,23 @@ public class AdminUsuarioService {
     }
 
     public UsuarioResponse actualizar(Long id, AdminUsuarioRequest request) {
+
         Usuario usuario = usuarioRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado con id: " + id));
 
-        if (!usuario.getCorreo().equals(request.getCorreo()) && usuarioRepository.existsByCorreo(request.getCorreo())) {
+        if (!usuario.getCorreo().equals(request.getCorreo()) &&
+                usuarioRepository.existsByCorreo(request.getCorreo())) {
             throw new EmailAlreadyExistsException("Ya existe otro usuario con el correo: " + request.getCorreo());
         }
 
         usuario.setNombre(request.getNombre());
         usuario.setCorreo(request.getCorreo());
         usuario.setNacionalidad(request.getNacionalidad());
-        usuario.setRol(request.getRol());
-        
+        usuario.setPreferencias(request.getPreferencias());
+        usuario.setPresupuestoEstimado(request.getPresupuestoEstimado());
+        usuario.setAvatarUrl(request.getAvatarUrl());
+        usuario.setRol(request.getRol() != null ? request.getRol() : usuario.getRol());
+
         if (request.getActivo() != null) {
             usuario.setActivo(request.getActivo());
         }
@@ -82,7 +92,7 @@ public class AdminUsuarioService {
     public void eliminar(Long id) {
         Usuario usuario = usuarioRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado con id: " + id));
-        
+
         usuario.setActivo(false); // Soft delete
         usuarioRepository.save(usuario);
     }

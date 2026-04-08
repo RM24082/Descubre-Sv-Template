@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 // Entidad categoria destino - Clasificación de destinos turísticos
 @Entity
-@Table(name = "categoria_destino")
+@Table(name = "categorias_destino")
 @Getter
 @Setter
 @NoArgsConstructor

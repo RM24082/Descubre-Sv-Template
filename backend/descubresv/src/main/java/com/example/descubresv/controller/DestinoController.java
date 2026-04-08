@@ -14,7 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-// Controlador de destinos con rutas publicas de consulta y admin para gestion
+// Controlador de destinos con rutas públicas de consulta y admin para gestion
 @RestController
 @Tag(name = "Destinos", description = "Consulta y gestion de destinos turisticos")
 public class DestinoController {
@@ -25,7 +25,7 @@ public class DestinoController {
         this.destinoService = destinoService;
     }
 
-    // Lista destinos activos con filtros opcionales, acceso publico
+    // Lista destinos activos con filtros opcionales, acceso público
     @GetMapping("/api/destinos")
     @Operation(summary = "Listar destinos", description = "Lista destinos activos con filtros opcionales y paginacion")
     public ResponseEntity<ApiResponse<PageResponse<DestinoResponse>>> listar(
