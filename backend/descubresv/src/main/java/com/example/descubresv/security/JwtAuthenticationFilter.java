@@ -79,9 +79,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
         String ruta = request.getRequestURI();
-        return ruta.equals("/api/auth/registro")
+        return "OPTIONS".equalsIgnoreCase(request.getMethod())
+                || ruta.equals("/api/auth/registro")
                 || ruta.equals("/api/auth/login")
                 || ruta.equals("/api/auth/logout")
+                || ruta.startsWith("/api/public")
+                || ("GET".equalsIgnoreCase(request.getMethod())
+                        && (ruta.startsWith("/api/destinos") || ruta.startsWith("/api/categorias")))
                 || ruta.startsWith("/swagger-ui")
                 || ruta.startsWith("/v3/api-docs")
                 || ruta.equals("/");

@@ -21,7 +21,6 @@ public class PresupuestoResponse {
     private BigDecimal costoTransporte;
     private BigDecimal costoAlimentacion;
     private BigDecimal costoEntrada;
-    private BigDecimal costoHospedaje;
     private BigDecimal costoOtros;
     private BigDecimal total;
     private String moneda;

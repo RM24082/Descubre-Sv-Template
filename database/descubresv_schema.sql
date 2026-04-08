@@ -47,7 +47,6 @@ CREATE TABLE IF NOT EXISTS destinos (
     horario             VARCHAR(200),
     mejor_epoca         VARCHAR(200),
     tipo                VARCHAR(100),
-    distancia_desde_capital VARCHAR(100),
     como_llegar_vehiculo TEXT,
     como_llegar_bus     TEXT,
     latitud             DECIMAL(10, 7),
@@ -102,9 +101,9 @@ CREATE TABLE IF NOT EXISTS itinerarios (
     fecha_inicio        DATE,
     fecha_fin           DATE,
     duracion            INTEGER DEFAULT 0,
-    presupuesto_total   DECIMAL(10, 2) DEFAULT 0.00,
+    presupuesto_categoria VARCHAR(100),
     tipo_experiencia    VARCHAR(100),
-    compania_viaje      VARCHAR(100),
+    tipo_grupo          VARCHAR(100),
     modo_planificacion  VARCHAR(100),
     activo              BOOLEAN NOT NULL DEFAULT TRUE,
     created_at          TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -126,14 +125,13 @@ CREATE TABLE IF NOT EXISTS itinerario_destinos (
 
 CREATE INDEX IF NOT EXISTS idx_itinerario_destinos_destino ON itinerario_destinos(id_destino);
 
--- Tabla presupuestos - desglose de costos por itinerario
-CREATE TABLE IF NOT EXISTS presupuestos (
+-- Tabla presupuesto - desglose de costos por itinerario
+CREATE TABLE IF NOT EXISTS presupuesto (
     id_presupuesto      SERIAL PRIMARY KEY,
     id_itinerario       INTEGER NOT NULL REFERENCES itinerarios(id_itinerario) ON DELETE CASCADE,
     costo_transporte    DECIMAL(10, 2) DEFAULT 0.00,
     costo_alimentacion  DECIMAL(10, 2) DEFAULT 0.00,
-    costo_entradas      DECIMAL(10, 2) DEFAULT 0.00,
-    costo_hospedaje     DECIMAL(10, 2) DEFAULT 0.00,
+    costo_entrada       DECIMAL(10, 2) DEFAULT 0.00,
     costo_otros         DECIMAL(10, 2) DEFAULT 0.00,
     total               DECIMAL(10, 2) DEFAULT 0.00,
     moneda              VARCHAR(10) NOT NULL DEFAULT 'USD',
@@ -141,7 +139,7 @@ CREATE TABLE IF NOT EXISTS presupuestos (
     updated_at          TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_presupuestos_itinerario ON presupuestos(id_itinerario);
+CREATE INDEX IF NOT EXISTS idx_presupuesto_itinerario ON presupuesto(id_itinerario);
 
 -- Tabla transportes - opciones de transporte por destino
 CREATE TABLE IF NOT EXISTS transportes (
@@ -206,7 +204,7 @@ CREATE TRIGGER trg_itinerarios_updated_at
     FOR EACH ROW EXECUTE FUNCTION actualizar_updated_at();
 
 CREATE TRIGGER trg_presupuestos_updated_at
-    BEFORE UPDATE ON presupuestos
+    BEFORE UPDATE ON presupuesto
     FOR EACH ROW EXECUTE FUNCTION actualizar_updated_at();
 
 CREATE TRIGGER trg_transportes_updated_at

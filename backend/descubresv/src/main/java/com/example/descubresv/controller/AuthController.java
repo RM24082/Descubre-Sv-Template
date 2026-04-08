@@ -18,10 +18,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
-// Controlador de autenticacion, maneja registro, login, logout y perfil
+// Controlador de autenticación, maneja registro, login, logout y perfil
 @RestController
 @RequestMapping("/api/auth")
-@Tag(name = "Autenticacion", description = "Registro e inicio de sesion de usuarios")
+@Tag(name = "Autenticación", description = "Registro e inicio de sesión de usuarios")
 public class AuthController {
 
     private final AuthService authService;
@@ -51,7 +51,7 @@ public class AuthController {
 
     // Valida credenciales y setea la cookie JWT
     @PostMapping("/login")
-    @Operation(summary = "Iniciar sesion", description = "Valida credenciales y retorna el token en una cookie")
+    @Operation(summary = "Iniciar sesión", description = "Valida credenciales y retorna el token en una cookie")
     public ResponseEntity<ApiResponse<AuthResponse>> login(
             @Valid @RequestBody LoginRequest request,
             HttpServletResponse response) {
@@ -64,17 +64,17 @@ public class AuthController {
         return ResponseEntity.ok(ApiResponse.success("Inicio de sesion exitoso", authResponse));
     }
 
-    // Limpia la cookie JWT para cerrar sesion
+    // Limpia la cookie JWT para cerrar sesión
     @PostMapping("/logout")
-    @Operation(summary = "Cerrar sesion", description = "Elimina la cookie JWT del navegador")
+    @Operation(summary = "Cerrar sesión", description = "Elimina la cookie JWT del navegador")
     public ResponseEntity<ApiResponse<String>> logout(HttpServletResponse response) {
         response.addCookie(jwtService.crearCookieCerrarSesion());
-        return ResponseEntity.ok(ApiResponse.success("Sesion cerrada exitosamente", null));
+        return ResponseEntity.ok(ApiResponse.success("Sesión cerrada exitosamente", null));
     }
 
     // Retorna los datos del usuario autenticado
     @GetMapping("/perfil")
-    @Operation(summary = "Obtener perfil", description = "Retorna los datos del usuario que tiene la sesion activa")
+    @Operation(summary = "Obtener perfil", description = "Retorna los datos del usuario que tiene la sesión activa")
     public ResponseEntity<ApiResponse<UsuarioResponse>> perfil() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Long userId = (Long) ((UsernamePasswordAuthenticationToken) auth).getDetails();

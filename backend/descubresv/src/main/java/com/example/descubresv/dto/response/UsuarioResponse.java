@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-// Datos del usuario que se envian al cliente, sin exponer el password
+// Datos del usuario que se envían al cliente, sin exponer el password
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

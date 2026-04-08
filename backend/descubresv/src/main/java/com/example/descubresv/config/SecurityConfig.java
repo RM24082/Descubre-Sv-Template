@@ -47,13 +47,13 @@ public class SecurityConfig {
                                 // Configuracion CORS - permite requests desde React
                                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
 
-                                // Configuracion CSRF con cookies para SPA React
+                                // Configuracion CSRF: se omite en API REST para pruebas con Postman y JWT
                                 .csrf(csrf -> csrf
                                                 .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                                                 .csrfTokenRequestHandler(new SpaCsrfTokenRequestHandler())
-                                                // Ignorar CSRF en endpoints de autenticacion y Swagger
+                                                // Ignorar CSRF para endpoints API y Swagger
                                                 .ignoringRequestMatchers(
-                                                                "/api/auth/**",
+                                                                "/api/**",
                                                                 "/swagger-ui/**",
                                                                 "/v3/api-docs/**"))
 
@@ -63,6 +63,9 @@ public class SecurityConfig {
 
                                 // Reglas de acceso a endpoints
                                 .authorizeHttpRequests(auth -> auth
+                                                // Preflight CORS
+                                                .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+
                                                 // Rutas publicas de auth, perfil queda protegido
                                                 .requestMatchers("/api/auth/registro", "/api/auth/login",
                                                                 "/api/auth/logout")
